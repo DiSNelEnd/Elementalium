@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.ViewBunchPage"
+             Title="Связка">
+    <ScrollView>
+        <StackLayout Style="{StaticResource stackLayout}">
+            <Label x:Name="bunchLabel"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="30"
+                TextColor="Brown"/>
+
+            <Button Text="Удалить" 
+                    Clicked="OnDeleteBunchClicked"
+                    Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

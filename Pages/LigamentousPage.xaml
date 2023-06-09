@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.LigamentousPage"
+             Title="Связочная">
+    <StackLayout Style="{StaticResource stackLayout}">
+        <Grid Padding="5">
+           <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="*"/>
+           </Grid.ColumnDefinitions>
+            <Entry x:Name="countEntry" 
+                   Placeholder="кол. элементов" 
+                   Keyboard="Numeric"
+                   Style="{StaticResource entryStyle}"/>
+
+            <Entry x:Name="complexityEntry" 
+                   Placeholder="сложность" 
+                   Keyboard="Numeric"
+                   Style="{StaticResource entryStyle}"
+                   Grid.Column="1"/>
+        </Grid>
+        <Button Text="Сгенерировать" 
+                Clicked="OnBunchGenerateClicked"
+
+                Style="{StaticResource buttonStyle}"/>
+
+        <Label x:Name="bunchLabel" 
+               FontSize="22" 
+               HorizontalOptions="Center" 
+               VerticalOptions="CenterAndExpand" 
+               FontAttributes="Bold" TextColor="Brown"/>
+
+        <Button Text="Список связок" 
+                Clicked="OnBunchesListClicked"  
+                VerticalOptions="End"
+                Style="{StaticResource buttonStyle}"/>
+    </StackLayout>
+</ContentPage>

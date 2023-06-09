@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Elementalium.Domain.Model;assembly=Elementalium"
+             x:Class="Elementalium.Pages.ElementEntryPage" 
+             Title="Информация об элементе">
+    <ScrollView>
+        <StackLayout x:DataType="model:WoElement" Style="{StaticResource stackLayout}">
+            <Label Text="Название"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry Text="{Binding Name}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите название"/>
+
+            <Label Text="Сложность"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry x:Name ="complexityEntry"
+                   Text="{Binding Complexity}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите цифру 1-9 "
+                   Keyboard="Numeric"
+                   Completed="OnEntryComplexityCompleted"/>
+
+            <Label Text="Семейства: Intercept-Перехват=0 ClimbHorizontalBar-Подъем на турник=1 Binder-Связующий=2 Degrees-Градусы=3 Span-Перемах=4 Turnover-Оборот=5 Dismount-Соскок=6 Static-Статика=7"
+                   Style="{StaticResource normalLabel}"
+                   TextColor="Brown"/>
+
+            <Label Text="Тип"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry x:Name="typeEntry"
+                   Text="{Binding Type}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите цифру 1-7"
+                   Completed="OnEntryTypeCompleted"/>
+
+            <Label Text="Позиция: Вис=0 Вис сзади=1  Сед=2  Упор=3  Упор сзади=4  Земля=5"
+                   Style="{StaticResource normalLabel}"
+                   TextColor="Brown"/>
+
+            <Label Text="Хват: Обратный хват=0  Верхний хват=1  Нижний хват=2  Разнохват=3"
+                   Style="{StaticResource normalLabel}"
+                   TextColor="Brown"/>
+
+            <Label Text="Начальная позиция"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry x:Name="startPositionEntry" Text="{Binding StartPositionLine}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите номер (Позиция:Хват,Хват...)"
+                   Completed="OnStartPositionCompleted"/>
+
+            <Label Text="Конечная позиция"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry x:Name="endPositionEntry" Text="{Binding EndPositionLine}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите номер (Позиция:Хват,Хват...)"
+                   Completed="OnEndPositionCompleted"/>
+
+            <Label Text="Особеность: Пронос ног=0  Инерция=1  Подколени=2  Проворот плеч=3  Сальто=4  Страх=5  Сила=6"
+                   Style="{StaticResource normalLabel}"
+                   TextColor="Brown"/>
+
+            <Label Text="Особеность"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Entry x:Name="featuresEntry" Text="{Binding FeatureLine}"
+                   Style="{StaticResource entryStyle}"
+                   Placeholder="Введите цифры через (,) если есть"
+                   Completed="OnFeaturesEntry"/>
+
+            <Label Text="Умею"
+                   Style="{StaticResource normalLabel}"/>
+            <CheckBox IsChecked="{Binding Can}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Color"
+                                        Value="Red" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="IsChecked">
+                            <VisualState.Setters>
+                                <Setter Property="Color"
+                                        Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </CheckBox>
+
+            <Grid Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Сохранить"
+                        Clicked="OnSaveButtonClicked"
+                        Style="{StaticResource buttonStyle}"/>
+
+                <Button Text="Удалить"
+                        Grid.Column="1"
+                        Clicked="OnDeleteButtonClicked"
+                        Style="{StaticResource buttonStyle}"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

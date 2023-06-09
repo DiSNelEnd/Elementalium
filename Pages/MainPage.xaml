@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Elementalium.Domain.Model;assembly=Elementalium"
+             x:Class="Elementalium.MainPage">
+
+    <StackLayout Style="{StaticResource stackLayout}">
+        <Label Text="Добро пожаловать в Элементалиум" 
+               Style="{StaticResource titleLabel}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210" ></ColumnDefinition>
+                <ColumnDefinition Width="*" ></ColumnDefinition>
+                <ColumnDefinition Width="25" ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Entry Completed="WriteNicknameCompleted" 
+                   HorizontalTextAlignment="Center" 
+                   Grid.ColumnSpan="1" 
+                   Placeholder="Введите ник" 
+                   Text="{Binding Source= {x:Static model:Athlete.Niсkname}}"
+                   Style="{StaticResource entryStyle}"/>
+
+            <Label Text="Уровень:" 
+                   Grid.Column="1" 
+                   HorizontalOptions="End"
+                   Style="{StaticResource normalLabel}"/>
+
+            <Label x:Name="levelLabel" 
+                   Grid.Column="2"
+                   Style="{StaticResource titleLabel}"/>
+
+            <Label Text="Список элементов" 
+                   Grid.Row="1" 
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource normalLabel}"
+                   FontSize="Small"/>
+
+            <Button Text="Элементалиум"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Clicked="OnElementaliumButtonClicked" 
+                    Style="{StaticResource buttonStyle}"/>
+
+            <Label Text="Генератор связок" 
+                   Grid.Row="3" 
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource normalLabel}"
+                   FontSize="Small"/>
+
+            <Button Text="Связочная"
+                    Clicked="OnLigamentousButtonClicked"
+                    Grid.Row="4"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource buttonStyle}"/>
+
+            <Label Text="Начать тренеровку" 
+                   Grid.Row="5" 
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource normalLabel}"
+                   FontSize="Small"/>
+
+            <Button Text="Тренеровка"
+                    Clicked="OnTrainingButtonClicked"
+                    Grid.Row="6"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource buttonStyle}"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.CreateTrainingPage" Title="Создание тренировки">
+    <StackLayout Style="{StaticResource stackLayout}">
+        <Label Text="Выберите элементы для изучения"
+               Style="{StaticResource titleLabel}"/>
+
+        <CollectionView x:Name="collectionView" 
+                        SelectionMode="Multiple">
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <Grid Padding="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding Name}" 
+                                   Grid.ColumnSpan="4" 
+                                   Style="{StaticResource normalLabel}"/>
+
+                            <Label Text="Сложность:" 
+                                   Grid.Row="1"
+                                   Style="{StaticResource smallLabel}"/>
+
+                            <Label Text="{Binding Complexity }" 
+                                   Grid.Row="1" 
+                                   Grid.Column="1"
+                                   Style="{StaticResource bindingSmallLabel}"/>
+
+                            <Label Text="Тип:" 
+                                   Grid.Column="2" 
+                                   Grid.Row="1" 
+                                   Style="{StaticResource smallLabel}"/>
+
+                            <Label Text="{Binding RussianNameType}" 
+                                   Grid.Column="3" 
+                                   Grid.Row="1"
+                                   Style="{StaticResource bindingSmallLabel}"/>
+
+                            <Label Text="Особеность:"
+                                   Grid.Row="2"
+                                   Style="{StaticResource smallLabel}"></Label>
+
+                            <Label Text="{Binding Features}"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   Grid.ColumnSpan="3"
+                                   Style="{StaticResource bindingSmallLabel}"/>
+                        </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Создать"
+                Clicked="OnCreateClicked"
+                Style="{StaticResource buttonStyle}"/>
+
+        <Button Text="Список тренировок"
+                Clicked="OnTrainingListButtonClicked"
+                Style="{StaticResource buttonStyle}"/>
+    </StackLayout>
+</ContentPage>

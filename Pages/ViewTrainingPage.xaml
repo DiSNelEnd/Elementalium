@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.ViewTrainingPage" Title="Тренировка">
+    <StackLayout Style="{StaticResource stackLayout}">
+        <ScrollView HeightRequest="1500">
+            <StackLayout>
+                <Label Text="Повторяем необходимые элементы: 2-4 попытки" 
+                       Style="{StaticResource normalLabel}"/>
+
+                <Picker x:Name="picker"
+                        FontSize="Medium"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Title="Выберите элемент"
+                        SelectedIndexChanged="OnSelectedIndexChanged"
+                        ItemDisplayBinding="{Binding Name}"/>
+
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="typeLabel"
+                           Style="{StaticResource bindingSmallLabel}"/>
+                    <Label x:Name="featureLabel"
+                           Style="{StaticResource bindingSmallLabel}"
+                           Grid.Column="1"/>
+                </Grid>
+
+                <Button Text="Выполнить связку"
+                        Clicked="OnPerformBundleClicked"
+                        Style="{StaticResource buttonStyle}"/>
+
+                <Label x:Name="bunchLabel"
+                       Style="{StaticResource titleLabel}"/>
+
+            </StackLayout>
+        </ScrollView >
+        <Label Text="Изучаем новые элементы :" 
+               Style="{StaticResource normalLabel}"/>
+
+        <ListView x:Name="listView" 
+                  ItemsSource="{Binding LearningNewWoElements}" 
+                  Style="{StaticResource listViewStyle}" 
+                  SelectionMode="None">
+            <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Name}" 
+                                       Style="{StaticResource normalLabel}"
+                                       Grid.ColumnSpan="3"/>
+
+                                <Label Text="{Binding RussianNameType}" 
+                                       Grid.Row="1"
+                                       Style="{StaticResource bindingSmallLabel}"/>
+
+                                <Label Text="Сложность:" 
+                                       Grid.Row="1" 
+                                       Grid.Column="1" 
+                                       HorizontalOptions="End" 
+                                       Style="{StaticResource smallLabel}"/>
+
+                                <Label Text="{Binding Complexity}" 
+                                       Grid.Column="2" 
+                                       Grid.Row="1" 
+                                       Style="{StaticResource bindingSmallLabel}"/>
+
+                                <Label Text="Выучил?"
+                                       Grid.Column="2" 
+                                       Grid.ColumnSpan="2" 
+                                       HorizontalOptions="End"
+                                       Style="{StaticResource smallLabel}"/>
+                                <CheckBox CheckedChanged="OnLearnElement" 
+                                          Grid.Column="3" 
+                                          Grid.RowSpan="2" 
+                                          Color="Green" 
+                                          VerticalOptions="End"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Завершить тренеровку" 
+                Clicked="OnCancelTrainingButtonClicked"
+                Style="{StaticResource buttonStyle}"></Button>
+    </StackLayout>
+</ContentPage>

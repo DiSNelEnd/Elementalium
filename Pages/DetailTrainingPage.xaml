@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.DetailTrainingPage"
+             Title="Информация о тренировке">
+    <ScrollView>
+        <StackLayout Style="{StaticResource stackLayout}">
+            <Label Text="Повторяли:" 
+                   Style="{StaticResource normalLabel}"/>
+
+            <Label Text="{Binding RepetitionsLine}" 
+                   Style="{StaticResource titleLabel}"
+                   HorizontalOptions="Start"/>
+
+            <Label Text="Делали связки:" 
+                   Style="{StaticResource normalLabel}"/>
+
+            <Label Text="{Binding LigamentsLine}" 
+                   Style="{StaticResource titleLabel}"
+                   HorizontalOptions="Start"/>
+
+            <Label Text="Изучали:" 
+                   Style="{StaticResource normalLabel}"/>
+
+            <Label Text="{Binding LearningNewLine}" 
+                   Style="{StaticResource titleLabel}"
+                   HorizontalOptions="Start"/>
+
+            <Label Text="Выучили:" 
+                   Style="{StaticResource normalLabel}"/>
+
+            <Label Text="{Binding LearnedElements}" 
+                   Style="{StaticResource titleLabel}"
+                   HorizontalOptions="Start"/>
+
+            <Button Text="Удалить" 
+                    Clicked="OnDeleteTrainingButtonClicked"
+                    Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

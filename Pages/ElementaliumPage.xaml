@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.ElementaliumPage"
+             Title="Элементалиум">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Сортировать"
+                     Clicked="OnSortListClicked"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Добавить"
+                     Clicked="OnElementAddedClicked" 
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="listView" 
+              ItemTapped="OnListViewItemTapped" 
+              Style="{StaticResource listViewStyle}" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <CheckBox x:Name="checkBox" 
+                                  IsChecked="{Binding Can}" 
+                                  IsVisible="False" />
+
+                        <Label Text="Не умею"
+                               Grid.RowSpan="3"
+                               Grid.Column="4"
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"
+                               Style="{DynamicResource titleLabel}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                             Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                                             Value="true">
+                                    <Setter Property="Text"
+                                            Value="Умею" />
+                                    <Setter Property="TextColor"
+                                            Value="Green" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label Text="{Binding Name}"
+                               Grid.ColumnSpan="4" 
+                               Style="{StaticResource normalLabel}"
+                               VerticalOptions="Center"/>
+
+                        <Label Text="Сложность:" 
+                               Grid.Row="1"
+                               Style="{StaticResource smallLabel}"/>
+
+                        <Label Text="{Binding Complexity }" 
+                               Grid.Row="1" 
+                               Grid.Column="1" 
+                               Style="{StaticResource bindingSmallLabel}"/>
+
+                        <Label Text="Тип:" 
+                               Grid.Column="2" 
+                               Grid.Row="1" 
+                               Style="{StaticResource smallLabel}"/>
+
+                        <Label Text="{Binding RussianNameType}" 
+                               Grid.Column="3" 
+                               Grid.Row="1"
+                               Style="{StaticResource bindingSmallLabel}"/>
+
+                        <Label Text="Особеность:"
+                               Grid.Row="2"
+                               Style="{StaticResource smallLabel}"/>
+
+                        <Label Text="{Binding Features}"
+                               Grid.Row="2"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="3"
+                               Style="{StaticResource bindingSmallLabel}"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Elementalium.Pages.BunchesListPage"
+             Title="Список связок">
+    <StackLayout Style="{StaticResource stackLayout}">
+        <ListView x:Name="listView" 
+                  ItemTapped="OnListViewItemTapped"
+                  Style="{StaticResource listViewStyle}">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell 
+                        Text="{Binding}"
+                        Detail="{Binding CreationTime}"
+                        TextColor="Brown"
+                        DetailColor="Black"/>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
